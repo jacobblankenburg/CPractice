@@ -8,17 +8,20 @@ namespace TestResturant
 {
     public class Resturant
     {
+        FileWritter filewriter = new FileWritter();
+
         string UserEntersName;
         int UserPicksPeople;
-        int UserPicksDate;
+        string UserPicksDate;
         int UserPicksTime;
 
         public void UserChecksResturantStats()
         {
             MakeStaff makestaff = new MakeStaff();
             UserControls usercontrols = new UserControls();
+            
 
-            Console.WriteLine(" Choose 1 to check inventory of ingredients \n Choose 2 to hire an employee\n Choose 3 to check if resturant is clean \n Choose 4 to take reservations\n Choose 5 to \n Choose 6 to End \n Choose 7 to go to Menu\n");
+            Console.WriteLine(" Choose 1 to check inventory of ingredients \n Choose 2 to hire an employee\n Choose 3 to check if resturant is clean \n Choose 4 to take reservations\n Choose 5 to End \n Choose 6 to go to Menu\n");
             bool Running = true;
 
             while (Running)
@@ -43,15 +46,11 @@ namespace TestResturant
                         continue;
 
                     case "4":
-                        Console.WriteLine(" :");
+                        Console.WriteLine(" Reservations:");
                         TakeReservations();
                         continue;
 
-                    case "5":
-                        Console.WriteLine(" :");
-
-                        continue;
-
+        
                     case "6":
                         Running = false;
                         break;
@@ -93,9 +92,11 @@ namespace TestResturant
             Console.WriteLine("How many people? ");
             this.UserPicksPeople = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("On What Day? ");
-            this.UserPicksDate = Convert.ToInt32(Console.ReadLine());
+            this.UserPicksDate = Console.ReadLine();
             Console.WriteLine("Time? ");
             this.UserPicksTime = Convert.ToInt32(Console.ReadLine());
+
+            //filewriter.WriteToFile("../../Reservations.txt", TakeReservations);
         }
         public override string ToString()
         {
